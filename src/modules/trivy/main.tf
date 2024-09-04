@@ -11,4 +11,12 @@ resource "helm_release" "trivy" {
     name = "operator.clusterSbomCacheEnabled"
     value = "true"
   }
+  set {
+    name = "serviceMonitor.enabled"
+    value = "true"
+  }
+  # set {
+  #   name = "trivy.ignoreUnfixed"
+  #   value = "true"
+  # }
 }

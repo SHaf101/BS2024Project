@@ -20,3 +20,9 @@ module "trivy" {
 
     depends_on = [ kubernetes_namespace.trivy-namespace ]
 }
+
+module "prometheus" {
+    source = "./modules/prometheus"
+
+    #depends_on = [ kubernetes_namespace.prometheus-namespace ]
+}
