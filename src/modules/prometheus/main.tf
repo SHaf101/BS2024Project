@@ -13,10 +13,10 @@ resource "helm_release" "prometheus" {
   }
   set {
     name = "prometheus.prometheusSpec.serviceMonitorSelector"
-    value = "{}"
+    value = ""
   }
   set {
     name = "prometheus.prometheusSpec.serviceMonitorNamespaceSelector"
-    value = "{}"
+    value = ""
   }
 }

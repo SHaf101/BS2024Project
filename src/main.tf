@@ -15,14 +15,20 @@ resource "kubernetes_namespace" "trivy-namespace" {
   }
 }
 
+resource "kubernetes_namespace" "prometheus-namespace" {
+  metadata {
+    name = "prometheus-namespace"
+  }
+}
+
 module "trivy" {
     source = "./modules/trivy"
 
-    depends_on = [ kubernetes_namespace.trivy-namespace ]
+    depends_on = [ kubernetes_namespace.trivy-namespace, module.prometheus ]
 }
 
 module "prometheus" {
     source = "./modules/prometheus"
 
-    #depends_on = [ kubernetes_namespace.prometheus-namespace ]
+    depends_on = [ kubernetes_namespace.prometheus-namespace ]
 }
